@@ -23,6 +23,9 @@ public class Country implements Serializable {
     @Column(name = "country_name")
     private String countryName;
 
+    @Column(name = "is_target_of_corea")
+    private Boolean isTargetOfCorea;
+
     @OneToOne
     @JoinColumn(unique = true)
     private Region region;
@@ -47,6 +50,19 @@ public class Country implements Serializable {
 
     public void setCountryName(String countryName) {
         this.countryName = countryName;
+    }
+
+    public Boolean isIsTargetOfCorea() {
+        return isTargetOfCorea;
+    }
+
+    public Country isTargetOfCorea(Boolean isTargetOfCorea) {
+        this.isTargetOfCorea = isTargetOfCorea;
+        return this;
+    }
+
+    public void setIsTargetOfCorea(Boolean isTargetOfCorea) {
+        this.isTargetOfCorea = isTargetOfCorea;
     }
 
     public Region getRegion() {
@@ -88,6 +104,7 @@ public class Country implements Serializable {
         return "Country{" +
             "id=" + getId() +
             ", countryName='" + getCountryName() + "'" +
+            ", isTargetOfCorea='" + isIsTargetOfCorea() + "'" +
             "}";
     }
 }

@@ -1,0 +1,50 @@
+{
+    "name": "GarbageJob",
+    "fields": [
+        {
+            "fieldName": "departmentName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "realJobName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "realJobDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "realSalary",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "dismissAfterMaxMonths",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "allowRenew",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "job",
+            "otherEntityName": "job",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180904162442",
+    "entityTableName": "garbage_job",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mySuffix"
+}

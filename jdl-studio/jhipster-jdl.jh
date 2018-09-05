@@ -4,6 +4,7 @@ entity Region {
 
 entity Country {
 	countryName String
+	isTargetOfCorea Boolean
 }
 
 // an ignored comment
@@ -56,6 +57,15 @@ entity JobHistory {
 	language Language
 }
 
+entity GarbageJob {
+	departmentName String required
+	realJobName String
+	realJobDescription String
+	realSalary Long
+	dismissAfterMaxMonths Integer
+	allowRenew Boolean
+}
+
 enum Language {
     FRENCH, ENGLISH, SPANISH
 }
@@ -86,7 +96,9 @@ relationship OneToMany {
 	/**
 	* Another side of the same relationship
 	*/
-	Employee
+	Employee,
+	Job{garbageJob} to
+	GarbageJob
 }
 
 relationship ManyToOne {

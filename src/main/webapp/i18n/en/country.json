@@ -17,6 +17,7 @@
                 "title": "Country"
             },
             "countryName": "Country Name",
+            "isTargetOfCorea": "Is Target Of Corea",
             "region": "Region"
         }
     }

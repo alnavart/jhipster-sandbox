@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-garbage-job-my-suffix-heading" jhiTranslate="sandboxApp.garbageJob.home.createOrEditLabel">Create or edit a Garbage Job</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!garbageJob.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="garbageJob.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sandboxApp.garbageJob.departmentName" for="field_departmentName">Department Name</label>
+                    <input type="text" class="form-control" name="departmentName" id="field_departmentName"
+                        [(ngModel)]="garbageJob.departmentName" required/>
+                    <div [hidden]="!(editForm.controls.departmentName?.dirty && editForm.controls.departmentName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.departmentName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sandboxApp.garbageJob.realJobName" for="field_realJobName">Real Job Name</label>
+                    <input type="text" class="form-control" name="realJobName" id="field_realJobName"
+                        [(ngModel)]="garbageJob.realJobName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sandboxApp.garbageJob.realJobDescription" for="field_realJobDescription">Real Job Description</label>
+                    <input type="text" class="form-control" name="realJobDescription" id="field_realJobDescription"
+                        [(ngModel)]="garbageJob.realJobDescription" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sandboxApp.garbageJob.realSalary" for="field_realSalary">Real Salary</label>
+                    <input type="number" class="form-control" name="realSalary" id="field_realSalary"
+                        [(ngModel)]="garbageJob.realSalary" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sandboxApp.garbageJob.dismissAfterMaxMonths" for="field_dismissAfterMaxMonths">Dismiss After Max Months</label>
+                    <input type="number" class="form-control" name="dismissAfterMaxMonths" id="field_dismissAfterMaxMonths"
+                        [(ngModel)]="garbageJob.dismissAfterMaxMonths" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sandboxApp.garbageJob.allowRenew" for="field_allowRenew">Allow Renew</label>
+                    <input type="checkbox" class="form-control" name="allowRenew" id="field_allowRenew"
+                        [(ngModel)]="garbageJob.allowRenew" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sandboxApp.garbageJob.job" for="field_job">Job</label>
+                    <select class="form-control" id="field_job" name="job" [(ngModel)]="garbageJob.jobId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="jobOption.id" *ngFor="let jobOption of jobs; trackBy: trackJobById">{{jobOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="sandboxApp.garbageJob.home.title">Garbage Jobs</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-garbage-job-my-suffix" [routerLink]="['/garbage-job-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="sandboxApp.garbageJob.home.createLabel">
+            Create new Garbage Job
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="garbageJobs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="sandboxApp.garbageJob.departmentName">Department Name</span></th>
+            <th><span jhiTranslate="sandboxApp.garbageJob.realJobName">Real Job Name</span></th>
+            <th><span jhiTranslate="sandboxApp.garbageJob.realJobDescription">Real Job Description</span></th>
+            <th><span jhiTranslate="sandboxApp.garbageJob.realSalary">Real Salary</span></th>
+            <th><span jhiTranslate="sandboxApp.garbageJob.dismissAfterMaxMonths">Dismiss After Max Months</span></th>
+            <th><span jhiTranslate="sandboxApp.garbageJob.allowRenew">Allow Renew</span></th>
+            <th><span jhiTranslate="sandboxApp.garbageJob.job">Job</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let garbageJob of garbageJobs ;trackBy: trackId">
+                <td><a [routerLink]="['/garbage-job-my-suffix', garbageJob.id, 'view' ]">{{garbageJob.id}}</a></td>
+                <td>{{garbageJob.departmentName}}</td>
+                <td>{{garbageJob.realJobName}}</td>
+                <td>{{garbageJob.realJobDescription}}</td>
+                <td>{{garbageJob.realSalary}}</td>
+                <td>{{garbageJob.dismissAfterMaxMonths}}</td>
+                <td>{{garbageJob.allowRenew}}</td>
+                <td>
+                    <div *ngIf="garbageJob.jobId">
+                        <a [routerLink]="['../job-my-suffix', garbageJob.jobId , 'view' ]" >{{garbageJob.jobId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/garbage-job-my-suffix', garbageJob.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/garbage-job-my-suffix', garbageJob.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'garbage-job-my-suffix/'+ garbageJob.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

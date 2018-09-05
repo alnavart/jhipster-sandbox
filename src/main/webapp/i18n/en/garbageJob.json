@@ -1,0 +1,28 @@
+
+{
+    "sandboxApp": {
+        "garbageJob" : {
+            "home": {
+                "title": "Garbage Jobs",
+                "createLabel": "Create a new Garbage Job",
+                "createOrEditLabel": "Create or edit a Garbage Job"
+            },
+            "created": "A new Garbage Job is created with identifier {{ param }}",
+            "updated": "A Garbage Job is updated with identifier {{ param }}",
+            "deleted": "A Garbage Job is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Garbage Job {{ id }}?"
+            },
+            "detail": {
+                "title": "Garbage Job"
+            },
+            "departmentName": "Department Name",
+            "realJobName": "Real Job Name",
+            "realJobDescription": "Real Job Description",
+            "realSalary": "Real Salary",
+            "dismissAfterMaxMonths": "Dismiss After Max Months",
+            "allowRenew": "Allow Renew",
+            "job": "Job"
+        }
+    }
+}

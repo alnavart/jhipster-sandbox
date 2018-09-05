@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="garbageJob">
+            <h2><span jhiTranslate="sandboxApp.garbageJob.detail.title">Garbage Job</span> {{garbageJob.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="sandboxApp.garbageJob.departmentName">Department Name</span></dt>
+                <dd>
+                    <span>{{garbageJob.departmentName}}</span>
+                </dd>
+                <dt><span jhiTranslate="sandboxApp.garbageJob.realJobName">Real Job Name</span></dt>
+                <dd>
+                    <span>{{garbageJob.realJobName}}</span>
+                </dd>
+                <dt><span jhiTranslate="sandboxApp.garbageJob.realJobDescription">Real Job Description</span></dt>
+                <dd>
+                    <span>{{garbageJob.realJobDescription}}</span>
+                </dd>
+                <dt><span jhiTranslate="sandboxApp.garbageJob.realSalary">Real Salary</span></dt>
+                <dd>
+                    <span>{{garbageJob.realSalary}}</span>
+                </dd>
+                <dt><span jhiTranslate="sandboxApp.garbageJob.dismissAfterMaxMonths">Dismiss After Max Months</span></dt>
+                <dd>
+                    <span>{{garbageJob.dismissAfterMaxMonths}}</span>
+                </dd>
+                <dt><span jhiTranslate="sandboxApp.garbageJob.allowRenew">Allow Renew</span></dt>
+                <dd>
+                    <span>{{garbageJob.allowRenew}}</span>
+                </dd>
+                <dt><span jhiTranslate="sandboxApp.garbageJob.job">Job</span></dt>
+                <dd>
+                    <div *ngIf="garbageJob.jobId">
+                        <a [routerLink]="['/job-my-suffix', garbageJob.jobId, 'view']">{{garbageJob.jobId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/garbage-job-my-suffix', garbageJob.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

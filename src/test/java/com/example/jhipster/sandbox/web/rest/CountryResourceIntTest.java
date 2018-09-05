@@ -45,6 +45,9 @@ public class CountryResourceIntTest {
     private static final String DEFAULT_COUNTRY_NAME = "AAAAAAAAAA";
     private static final String UPDATED_COUNTRY_NAME = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_IS_TARGET_OF_COREA = false;
+    private static final Boolean UPDATED_IS_TARGET_OF_COREA = true;
+
     @Autowired
     private CountryRepository countryRepository;
 
@@ -91,7 +94,8 @@ public class CountryResourceIntTest {
      */
     public static Country createEntity(EntityManager em) {
         Country country = new Country()
-            .countryName(DEFAULT_COUNTRY_NAME);
+            .countryName(DEFAULT_COUNTRY_NAME)
+            .isTargetOfCorea(DEFAULT_IS_TARGET_OF_COREA);
         return country;
     }
 
@@ -117,6 +121,7 @@ public class CountryResourceIntTest {
         assertThat(countryList).hasSize(databaseSizeBeforeCreate + 1);
         Country testCountry = countryList.get(countryList.size() - 1);
         assertThat(testCountry.getCountryName()).isEqualTo(DEFAULT_COUNTRY_NAME);
+        assertThat(testCountry.isIsTargetOfCorea()).isEqualTo(DEFAULT_IS_TARGET_OF_COREA);
     }
 
     @Test
@@ -150,7 +155,8 @@ public class CountryResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(country.getId().intValue())))
-            .andExpect(jsonPath("$.[*].countryName").value(hasItem(DEFAULT_COUNTRY_NAME.toString())));
+            .andExpect(jsonPath("$.[*].countryName").value(hasItem(DEFAULT_COUNTRY_NAME.toString())))
+            .andExpect(jsonPath("$.[*].isTargetOfCorea").value(hasItem(DEFAULT_IS_TARGET_OF_COREA.booleanValue())));
     }
     
 
@@ -165,7 +171,8 @@ public class CountryResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(country.getId().intValue()))
-            .andExpect(jsonPath("$.countryName").value(DEFAULT_COUNTRY_NAME.toString()));
+            .andExpect(jsonPath("$.countryName").value(DEFAULT_COUNTRY_NAME.toString()))
+            .andExpect(jsonPath("$.isTargetOfCorea").value(DEFAULT_IS_TARGET_OF_COREA.booleanValue()));
     }
     @Test
     @Transactional
@@ -188,7 +195,8 @@ public class CountryResourceIntTest {
         // Disconnect from session so that the updates on updatedCountry are not directly saved in db
         em.detach(updatedCountry);
         updatedCountry
-            .countryName(UPDATED_COUNTRY_NAME);
+            .countryName(UPDATED_COUNTRY_NAME)
+            .isTargetOfCorea(UPDATED_IS_TARGET_OF_COREA);
         CountryDTO countryDTO = countryMapper.toDto(updatedCountry);
 
         restCountryMockMvc.perform(put("/api/countries")
@@ -201,6 +209,7 @@ public class CountryResourceIntTest {
         assertThat(countryList).hasSize(databaseSizeBeforeUpdate);
         Country testCountry = countryList.get(countryList.size() - 1);
         assertThat(testCountry.getCountryName()).isEqualTo(UPDATED_COUNTRY_NAME);
+        assertThat(testCountry.isIsTargetOfCorea()).isEqualTo(UPDATED_IS_TARGET_OF_COREA);
     }
 
     @Test

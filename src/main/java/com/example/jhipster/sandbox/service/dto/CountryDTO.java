@@ -12,6 +12,8 @@ public class CountryDTO implements Serializable {
 
     private String countryName;
 
+    private Boolean isTargetOfCorea;
+
     private Long regionId;
 
     public Long getId() {
@@ -28,6 +30,14 @@ public class CountryDTO implements Serializable {
 
     public void setCountryName(String countryName) {
         this.countryName = countryName;
+    }
+
+    public Boolean isIsTargetOfCorea() {
+        return isTargetOfCorea;
+    }
+
+    public void setIsTargetOfCorea(Boolean isTargetOfCorea) {
+        this.isTargetOfCorea = isTargetOfCorea;
     }
 
     public Long getRegionId() {
@@ -64,6 +74,7 @@ public class CountryDTO implements Serializable {
         return "CountryDTO{" +
             "id=" + getId() +
             ", countryName='" + getCountryName() + "'" +
+            ", isTargetOfCorea='" + isIsTargetOfCorea() + "'" +
             ", region=" + getRegionId() +
             "}";
     }

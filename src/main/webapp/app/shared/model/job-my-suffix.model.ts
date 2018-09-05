@@ -1,3 +1,4 @@
+import { IGarbageJobMySuffix } from 'app/shared/model//garbage-job-my-suffix.model';
 import { ITaskMySuffix } from 'app/shared/model//task-my-suffix.model';
 
 export interface IJobMySuffix {
@@ -6,6 +7,7 @@ export interface IJobMySuffix {
     minSalary?: number;
     maxSalary?: number;
     employeeId?: number;
+    garbageJobs?: IGarbageJobMySuffix[];
     tasks?: ITaskMySuffix[];
 }
 
@@ -16,6 +18,7 @@ export class JobMySuffix implements IJobMySuffix {
         public minSalary?: number,
         public maxSalary?: number,
         public employeeId?: number,
+        public garbageJobs?: IGarbageJobMySuffix[],
         public tasks?: ITaskMySuffix[]
     ) {}
 }

@@ -14,6 +14,11 @@
                     <input type="text" class="form-control" name="countryName" id="field_countryName"
                         [(ngModel)]="country.countryName" />
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sandboxApp.country.isTargetOfCorea" for="field_isTargetOfCorea">Is Target Of Corea</label>
+                    <input type="checkbox" class="form-control" name="isTargetOfCorea" id="field_isTargetOfCorea"
+                        [(ngModel)]="country.isTargetOfCorea" />
+                </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="sandboxApp.country.region" for="field_region">Region</label>

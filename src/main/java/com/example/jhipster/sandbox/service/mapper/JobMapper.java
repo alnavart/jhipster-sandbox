@@ -15,6 +15,7 @@ public interface JobMapper extends EntityMapper<JobDTO, Job> {
     JobDTO toDto(Job job);
 
     @Mapping(source = "employeeId", target = "employee")
+    @Mapping(target = "garbageJobs", ignore = true)
     Job toEntity(JobDTO jobDTO);
 
     default Job fromId(Long id) {

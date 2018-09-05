@@ -8,6 +8,7 @@ import { SandboxTaskMySuffixModule } from './task-my-suffix/task-my-suffix.modul
 import { SandboxEmployeeMySuffixModule } from './employee-my-suffix/employee-my-suffix.module';
 import { SandboxJobMySuffixModule } from './job-my-suffix/job-my-suffix.module';
 import { SandboxJobHistoryMySuffixModule } from './job-history-my-suffix/job-history-my-suffix.module';
+import { SandboxGarbageJobMySuffixModule } from './garbage-job-my-suffix/garbage-job-my-suffix.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -21,6 +22,7 @@ import { SandboxJobHistoryMySuffixModule } from './job-history-my-suffix/job-his
         SandboxEmployeeMySuffixModule,
         SandboxJobMySuffixModule,
         SandboxJobHistoryMySuffixModule,
+        SandboxGarbageJobMySuffixModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

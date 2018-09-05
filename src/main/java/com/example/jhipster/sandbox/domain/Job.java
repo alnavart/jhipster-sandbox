@@ -1,5 +1,6 @@
 package com.example.jhipster.sandbox.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -35,6 +36,9 @@ public class Job implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("jobs")
     private Employee employee;
+
+    @OneToMany(mappedBy = "job")
+    private Set<GarbageJob> garbageJobs = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "job_task",
@@ -101,6 +105,31 @@ public class Job implements Serializable {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public Set<GarbageJob> getGarbageJobs() {
+        return garbageJobs;
+    }
+
+    public Job garbageJobs(Set<GarbageJob> garbageJobs) {
+        this.garbageJobs = garbageJobs;
+        return this;
+    }
+
+    public Job addGarbageJob(GarbageJob garbageJob) {
+        this.garbageJobs.add(garbageJob);
+        garbageJob.setJob(this);
+        return this;
+    }
+
+    public Job removeGarbageJob(GarbageJob garbageJob) {
+        this.garbageJobs.remove(garbageJob);
+        garbageJob.setJob(null);
+        return this;
+    }
+
+    public void setGarbageJobs(Set<GarbageJob> garbageJobs) {
+        this.garbageJobs = garbageJobs;
     }
 
     public Set<Task> getTasks() {

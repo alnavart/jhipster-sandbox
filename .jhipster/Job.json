@@ -22,6 +22,12 @@
             "otherEntityField": "id"
         },
         {
+            "relationshipType": "one-to-many",
+            "relationshipName": "garbageJob",
+            "otherEntityName": "garbageJob",
+            "otherEntityRelationshipName": "job"
+        },
+        {
             "relationshipType": "many-to-many",
             "otherEntityRelationshipName": "job",
             "relationshipName": "task",
